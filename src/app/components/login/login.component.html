@@ -1,4 +1,4 @@
-<form action="#" method="post">
+<form (ngSubmit) = "onSubmitLoginForm()">
     <h2 class="title">Login</h2>
           <!--<p>
               <label for="Email" class="floatLabel">Email</label>
@@ -6,12 +6,12 @@
           </p>-->
           <p>
               <label for="User" class="floatLabel">Username</label>
-              <input id="Username" name="Username" type="text">
+              <input id="Username" name="Username" type="text" [(ngModel)]="UserName">
               <!--<span>Enter a password longer than 8 characters</span>-->
           </p>
           <p>
               <label for="password" class="floatLabel">Password</label>
-              <input id="Password" name="Password" type="text">
+              <input id="Password" name="Password" type="text" [(ngModel)]="Password">
               <!--<span>Your passwords do not match</span>-->
           </p>
           <p>

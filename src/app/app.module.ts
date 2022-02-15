@@ -19,11 +19,11 @@ import { ProtoMessageComponent } from './components/main/proto-message/proto-mes
 import { GroupBarComponent } from './components/main/group-bar/group-bar.component';
 const appRoutes: Routes = [
   
-  { path: 'Login', component: LoginComponent},
-  { path: 'Registration', component: RegistrationComponent},
-  { path: 'Main', component: MainComponent},
-  { path: '',   redirectTo: 'Main', pathMatch: 'full' },
-  { path: '**', redirectTo: 'Main' }
+  { path: 'login', component: LoginComponent},
+  { path: 'registration', component: RegistrationComponent},
+  { path: 'main', component: MainComponent},
+  { path: '',   redirectTo: 'login', pathMatch: 'full' }//,
+  //{ path: '**', redirectTo: 'Main' }
 ];
 
 
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { enableTracing: true }),
     AngularResizeEventModule,
   ],
   providers: [],
