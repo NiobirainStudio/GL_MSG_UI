@@ -240,6 +240,7 @@ export class MainComponent implements OnInit {
       res => {
         console.log(res);
         res.messages.forEach(element => {
+          this.messageArray = [];
           this.messageArray.push(element);
         });
       },
