@@ -20,4 +20,8 @@ export class ProtoMessageComponent implements OnInit {
     //console.log(" в метод toggle попало 2 аргумента  1 - "+ param1+" 2 -"+param2+ " при сравнении они выдают ="+ (param1==param2))
     return param1 == param2;
   }
+
+  getMyId(){
+    return +(localStorage.getItem("MyId") || -1);
+  }
 }

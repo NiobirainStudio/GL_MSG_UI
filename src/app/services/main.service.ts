@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http'
 import { Injectable } from '@angular/core';
 
 import * as signalR from '@aspnet/signalr';
+import { MessageDTO } from '../model/MessageDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +40,9 @@ export class MainService {
   }*/
 
   // Listeners
-  public ListenOnMessages(callbackFunction: (args: any) => void) {
+  public ListenOnMessages(callbackFunction: (args: MessageDTO) => void) {
     this.hubConnection.on('GroupMessages', (data) => {
+      console.log("Recieved " + data);
       callbackFunction(data);
     });
   }

@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
 
           case 2: {
             localStorage.setItem("UserSession", res.session);
+            localStorage.setItem("MyId", res.id);
             this.goToURL('/main');
             break;
           }

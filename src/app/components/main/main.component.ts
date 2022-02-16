@@ -244,8 +244,8 @@ export class MainComponent implements OnInit {
     this.service.PostAndRecieveData< { messages: MessageDTO[]} >(group_id, '/GetGroupMessages').subscribe(
       res => {
         console.log(res);
+        this.messageArray = [];
         res.messages.forEach(element => {
-          this.messageArray = [];
           this.messageArray.push(element);
         });
       },
@@ -259,8 +259,8 @@ export class MainComponent implements OnInit {
     return (+(localStorage.getItem("UserSession") || -1));
   }
 
-  public MessageCallbackFunction = (data: any): void => {
-    console.log(data);
+  public MessageCallbackFunction = (data: MessageDTO): void => {
+    this.messageArray.push(data);
   }
 
 
