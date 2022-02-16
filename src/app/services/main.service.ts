@@ -55,6 +55,7 @@ export class MainService {
 
   // Send data
   public SendTextMessage(user_id: number, message_data: string, group_id: number) {
+    console.log(user_id + " " + message_data + " " + group_id);
     this.hubConnection.invoke('PostMessage', user_id, message_data, 1, group_id)
       .catch(err => console.log("SendMessage " + err));
   }

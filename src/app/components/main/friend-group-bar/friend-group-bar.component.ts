@@ -12,6 +12,7 @@ export class FriendGroupBarComponent implements OnInit {
 
   @Output()
   groupSelected: EventEmitter<void> = new EventEmitter<void>();
+  selectedGroupId: EventEmitter<void> = new EventEmitter<void>();
   //subscription?: Subscription;
 
   constructor(private service: MainService) { }
@@ -36,5 +37,6 @@ export class FriendGroupBarComponent implements OnInit {
 
   selectGroup(){
     this.groupSelected.emit();
+    this.selectedGroupId.emit();
   }
 }

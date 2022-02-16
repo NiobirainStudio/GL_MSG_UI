@@ -30,7 +30,7 @@
 		</div>
 	  	<div class="contactList">
 			<ng-container *ngFor="let g of groupArray; let i=index">
-				<app-friend-group-bar [friendOrGroupData] ="g" (groupSelected)="GetMessages(g.id)" ></app-friend-group-bar>
+				<app-friend-group-bar [friendOrGroupData] ="g" (click)="SelectGroup(g.id)" (groupSelected)="GetMessages(g.id)" ></app-friend-group-bar>
 			</ng-container>
 	  </div>
   </div>

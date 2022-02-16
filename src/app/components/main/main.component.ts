@@ -18,12 +18,14 @@ export class MainComponent implements OnInit {
   groupArray: Array<GroupDTO> = [];
   messageArray: Array<MessageDTO> = [];
 
+  selectedGroupId: number;
+
   constructor(public service: MainService, @Inject(DOCUMENT) private document: Document) {}
   
   onKey(event: any): void {
     // keyCode for the Enter key is 13
     if (event.keyCode === 13) {
-      console.log('enterPressed', event.target.innerText);
+      //console.log('enterPressed', event.target.innerText);
       event.preventDefault();
     }
   }
@@ -215,10 +217,13 @@ export class MainComponent implements OnInit {
   }
 
 
+  SelectGroup(group_id: number){
+    this.selectedGroupId = group_id;
+  }
 
   /// DreaD_ver's methods
   WriteMessage() {
-    this.service.SendTextMessage(this.GetSession(), this.document.getElementById('newMessage')?.innerHTML || '', 1);
+    this.service.SendTextMessage(this.GetSession(), this.document.getElementById('newMessage')?.innerHTML || '', this.selectedGroupId);
   }
 
   GetGroups() {
@@ -255,12 +260,31 @@ export class MainComponent implements OnInit {
   }
 
   public MessageCallbackFunction = (data: any): void => {
-    console.log("Callback!");
     console.log(data);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // ON INIT GET ALL USER GROUPS
+  public GetAllUserGroups(){
+
+  }
+
+  // ON GROUP CHOOSE GET LAST X MESSAGES
+  public msg_count_take = 40;
+  public GetLastGroupMessages(){
+
+  }
 }
-
-
-
-
-
