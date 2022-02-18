@@ -4,9 +4,13 @@
     </div>
   <div class="contactInfo">
       <div class="contactInfo_header">
+          <div class="contactInfo_header_contactNameWrap">
+              <div class="contactInfo_header_roomTypeIcon"><i class="bi bi-person-fill"></i></div>
             <div class="contactInfo_header_contactName">{{ friendOrGroupData.name }}</div>
-            
-            <div class="contactInfo_header_contactLastMessageTime"> {{ friendOrGroupData.lastMessage.date }} </div>
+            </div>
+            <div class="contactInfo_header_contactLastMessageTime">
+                 <!-- {{ friendOrGroupData.lastMessage.date | customDateFormatPipe }} </div> -->
+                 {{ friendOrGroupData.lastMessage.date | date }} </div>
             
         </div>
         <div class="contactInfo_contactLastMessage">{{ friendOrGroupData.lastMessage.data }}</div>

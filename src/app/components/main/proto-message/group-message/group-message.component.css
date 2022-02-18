@@ -1,14 +1,10 @@
-.friendMessageSpace_mainMessageHolder_message_floatMenu_reply_button{
-    margin-left: 5px;
-    margin-right: 5px;
-}
-.friendMessageSpace {
+.groupMessageSpace {
 
     width: auto;
     padding-bottom: 3px;
     padding-left: 5px;
 }
-.friendMessageSpace_mainMessageHolder_message {
+.groupMessageSpace_mainMessageHolder_message {
 
     padding-top: 15px;
     padding-right: 15px;
@@ -18,14 +14,14 @@
     word-wrap: break-word;
     max-width: 70%;
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 40px;
 }
-.friendMessageSpace_additionalMessageHolder_message_floatMenuHolder {
+.groupMessageSpace_additionalMessageHolder_message_floatMenuHolder {
 	text-align: right;
 	margin-bottom: -30px;
 }
 
-.friendMessageSpace_mainMessageHolder_message_foatMenuHolder {
+.groupMessageSpace_mainMessageHolder_message_foatMenuHolder {
 	text-align: right;
 	margin-bottom: -30px;
 }
@@ -34,27 +30,27 @@
 	opacity: 1;
 }
 
-.friendMessageSpace_additionalMessageHolder_message_emojiReaction {
+.groupMessageSpace_additionalMessageHolder_message_emojiReaction {
 	margin-top: 5px;
 }
-.friendMessageSpace_additionalMessageHolder_message_floatMenu_addEmoji_button {
+.groupMessageSpace_additionalMessageHolder_message_floatMenu_addEmoji_button {
 	display: inline-block;
 }
 
-.friendMessageSpace_additionalMessageHolder_message_floatMenu_reply_button {
+.groupMessageSpace_additionalMessageHolder_message_floatMenu_reply_button {
 	display: inline-block;
 }
 
-.friendMessageSpace_additionalMessageHolder_message_floatMenu_other_button {
+.groupMessageSpace_additionalMessageHolder_message_floatMenu_other_button {
 	display: inline-block;
 }
-.friendMessageSpace_mainMessageHolder_message_floatMenu:hover{
+.groupMessageSpace_mainMessageHolder_message_floatMenu:hover{
 	opacity: 1;
 }
-.friendMessageSpace_additionalMessageHolder_message_floatMenu:hover{
+.groupMessageSpace_additionalMessageHolder_message_floatMenu:hover{
 	opacity: 1;
 }
-.friendMessageSpace_additionalMessageHolder_message_floatMenu {
+.groupMessageSpace_additionalMessageHolder_message_floatMenu {
     padding: 5px;
     border-radius: 7px;
     display: inline-block;
@@ -63,11 +59,11 @@
     opacity: 0.5;
     bottom: 25px;
 }
-.friendMessageSpace_mainMessageHolder_message_floatMenuHolder {
+.groupMessageSpace_mainMessageHolder_message_floatMenuHolder {
     text-align: right;
     margin-bottom: -37px;
 }
-.friendMessageSpace_additionalMessageHolder_message {
+.groupMessageSpace_additionalMessageHolder_message {
 
     padding-top: 10px;
     padding-right: 15px;
@@ -78,9 +74,9 @@
     max-width: 70%;
     margin-top: 3px;
     display: inline-block;
-
+    margin-left: 40px;
 }
-.friendMessageSpace_info_avatar {
+.groupMessageSpace_info_avatar {
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -90,7 +86,7 @@
     margin-top: -20px;
     background-color: #e5b346;
 }
-.friendMessageSpace_mainMessageHolder_message_floatMenu {
+.groupMessageSpace_mainMessageHolder_message_floatMenu {
 
     padding: 5px;
     border-radius: 7px;
@@ -100,32 +96,31 @@
     bottom: 30px;
     opacity: 0.5;
 }
-.friendMessageSpace_mainMessageHolder_message_floatMenu_other_button {
+.groupMessageSpace_mainMessageHolder_message_floatMenu_other_button {
     padding-left: 2px;
     display: inline-block;
 }
-.friendMessageSpace_mainMessageHolder_message_emojiReaction   {
+.groupMessageSpace_mainMessageHolder_message_emojiReaction   {
     padding-top: 7px;
 }
-.friendMessageSpace_mainMessageHolder_message_floatMenu_reply_button {
+.groupMessageSpace_mainMessageHolder_message_floatMenu_reply_button {
     display: inline-block;
 }
-.friendMessageSpace_mainMessageHolder_message_senderName {
+.groupMessageSpace_mainMessageHolder_message_senderName {
     padding-bottom: 5px;
     font-weight: bold;
 }
-.friendMessageSpace_info_time {
+.groupMessageSpace_info_time {
     display: inline-block;
-    margin-left: 20px;
 
 }
-.friendMessageSpace_info_deliveryStatus {
+.groupMessageSpace_info_deliveryStatus {
     display: inline-block;
     margin-left: 5px;
 
 
 }
-.friendMessageSpace_mainMessageHolder_message_floatMenu_addEmoji_button {
+.groupMessageSpace_mainMessageHolder_message_floatMenu_addEmoji_button {
     padding-left: 10px;
     display: inline-block;
 }

@@ -16,7 +16,7 @@ body {
 }
 .left_header_menuAndSearch {
     width: 100%;
-
+    padding-top: 5px;
     height: 50px;
 }
 .left_main_colum {
@@ -100,15 +100,12 @@ body {
 .left_header_menuAndSearch_menubutton {
     border: none;
     color: white;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    font-size: 21px;
     cursor: pointer;
     display: inline-block;
     background-color: transparent;
-    font-stretch: expanded;
-    height: 30px;
-    width: 50px;
+    max-height: 30px;
+
+    max-width: 50px;
 }
 
 .right_header {
@@ -126,24 +123,7 @@ body {
     background-color: #E5B346;
 }
 
-.friendMessageSpace {
 
-    width: auto;
-    padding-bottom: 3px;
-    padding-left: 5px;
-}
-.friendMessageSpace_mainMessageHolder_message {
-
-    padding-top: 15px;
-    padding-right: 15px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    border-radius: 0px 7px 7px;
-    word-wrap: break-word;
-    max-width: 70%;
-    display: inline-block;
-    margin-left: 40px;
-}
 
 ::-webkit-scrollbar {
     width: 6px;
@@ -170,7 +150,7 @@ body {
 }
 
 .messageBarWidthHolder{
-    height: 100%;
+    min-height: 100%;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -211,12 +191,16 @@ body {
     display: inline-block;
     word-wrap: break-word;
     max-width: 70%;
+    margin-right: 20px;
 }
 .myMessageSpace {
 
     text-align: right;
     padding-right: 5px;
     padding-bottom: 3px;
+}
+.myMessageSpace_info{
+    margin-right: 20px;
 }
 .myMessageSpace_info_time {
     
@@ -227,16 +211,10 @@ body {
 .deliveryStatus_bar {
     text-align: right;
     display: inline-block;
-}
-.friendMessageSpace_info_deliveryStatus {
-    display: inline-block;
-
+    margin-right: 20px;
 
 }
-.friendMessageSpace_mainMessageHolder_message_floatMenu_addEmoji_button {
-    padding-left: 10px;
-    display: inline-block;
-}
+
 .myMessageSpace_additionalMessageHolder_message_floatMenu_addEmoji_button {
     padding-left: 10px;
     display: inline-block;
@@ -257,33 +235,21 @@ body {
 
 
 
-.friendMessageSpace_info_time {
-    display: inline-block;
 
-}
 .reply_bar {
     display: inline-block;
     font-size: 36px;
     color: green;
     opacity: 0.5;
 }
-.friendMessageSpace_mainMessageHolder_message_senderName {
-    padding-bottom: 5px;
-    font-weight: bold;
-}
+
 .senderMe_bar {
     padding-bottom: 10px;
     font-weight: bold;
 
 }
-.friendMessageSpace_mainMessageHolder_message_emojiReaction   {
-    padding-top: 7px;
-}
-.friendMessageSpace_mainMessageHolder_message_floatMenu_reply_button {
-    display: inline-block;
 
-
-}.myMessageSpace_additionalMessageHolder_message_floatMenu_editMessage_button {
+.myMessageSpace_additionalMessageHolder_message_floatMenu_editMessage_button {
     display: inline-block;
 
 
@@ -292,20 +258,7 @@ body {
 
 
 }
-.friendMessageSpace_mainMessageHolder_message_floatMenu {
 
-    padding: 5px;
-    border-radius: 7px;
-    display: inline-block;
-    position: relative;
-    text-align: right;
-    bottom: 30px;
-    opacity: 0.5;
-}
-.friendMessageSpace_mainMessageHolder_message_floatMenu_other_button {
-    padding-left: 2px;
-    display: inline-block;
-}
 .myMessageSpace_additionalMessageHolder_message_floatMenu_other_button {
     padding-left: 2px;
     display: inline-block;
@@ -314,38 +267,13 @@ body {
     padding-left: 2px;
     display: inline-block;
 }
-.friendMessageSpace_additionalMessageHolder_message {
 
-    padding-top: 10px;
-    padding-right: 15px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    border-radius: 7px;
-    word-wrap: break-word;
-    max-width: 70%;
-    margin-top: 3px;
-    display: inline-block;
-    margin-left: 40px;
-}
-.friendMessageSpace_info_avatar {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    top: 20px;
-    border-radius: 20px;
-    margin-top: -20px;
-    background-color: #e5b346;
-}
 .myMessageSpace_mainMessageHolder_message_floatMenuHolder {
     margin-bottom: -20px;
     text-align: left;
 }
 
-.friendMessageSpace_mainMessageHolder_message_floatMenuHolder {
-    text-align: right;
-    margin-bottom: -37px;
-}
+
 
 .myMessageSpace_mainMessageHolder_message_floatMenu {
 
@@ -372,57 +300,10 @@ body {
 .myMessageSpace_mainMessageHolder_message_emojiReaction {
     padding-top: 7px;
 }
-.contact_bar {
-    height: 60px;
-
-    cursor: pointer;
-}
-
-.contactBar_avatar {
-    height: 50px;
-    border-radius: 25px;
-    width: 50px;
-    margin-top: 5px;
-    margin-right: 5px;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    float: left;
-    background-color: #e5b346;
-}
-.contactInfo_header_contactName {
-    display: inline-block;
-    flex: auto;
-    padding-left: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-weight: bold;
-    font-size: 14px;
-}
-.contactInfo_contactLastMessage {
-    padding-top: 5px;
-    padding-left: 5px;
-    padding-bottom: 5px;
-    overflow: hidden;
-    display: block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding-right: 10px;
-}
 
 
-.contactInfo_header_contactLastMessageTime {
-    display: inline-block;
-    padding-right: 10px;
-    overflow: hidden;
-}
-.contactInfo_header {
-    display: flex;
-    padding-top: 7px;
-}
-.contactInfo {
-    margin-left: 50px;
-}
+
+
 .myMessageSpace_additionalMessageHolder_message_floatMenuHolder {
     margin-top: -25px;
     text-align: left;
@@ -452,15 +333,7 @@ body {
 
 
 }
-.friendMessageSpace_additionalMessageHolder_message_floatMenu {
-    padding: 5px;
-    border-radius: 7px;
-    display: inline-block;
-    position: relative;
-    text-align: right;
-    opacity: 0.5;
-    bottom: 25px;
-}
+
 .addFileButton_bar {
     display: inline-block;
 }
@@ -497,6 +370,16 @@ body {
     bottom: 10px;
     background-color: transparent;
     font-size: 30px;
+}
+.response_contentWrap_button_sendMessage {
+    cursor: pointer;
+    border-style: none;
+    margin-left: 2%;
+    position: relative;
+    bottom: 10px;
+    background-color: transparent;
+    font-size: 30px;
+
 }
 
 .response_contentWrap_button_emoji {
@@ -537,12 +420,7 @@ body {
 .myMessageSpace_additionalMessageHolder_message_floatMenu:hover{
 	opacity: 1;
 }
-.friendMessageSpace_mainMessageHolder_message_floatMenu:hover{
-	opacity: 1;
-}
-.friendMessageSpace_additionalMessageHolder_message_floatMenu:hover{
-	opacity: 1;
-}
+
 
 .response_input[placeholder]:empty:before {
     content: attr(placeholder);
@@ -564,6 +442,32 @@ body {
 
     
 
+}
+.metaDataMessageSpace {
+	width: auto;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.metaDataMessageBar {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 4px;
+    padding-bottom: 3px;
+    border-radius: 20px;
+    max-height: 30px;
+    max-width: 100%;
+    background: rgba(66, 245, 212, 0.5);
+}
+.myMessageSpace_info_deliveryStatus {
+	display: inline-block;
+    margin-left: 10px;
+	
+}
+.metaDataMessageText {
+    color: #FCFCFC;
+    font-weight: bold;
 }
 .right_header_avatar_bar{
     display: inline-block;
@@ -615,7 +519,10 @@ body {
     padding-right: 10px;
 }
 .menuIcon { 
-	transform: scale(1.5,1); 
+    position: relative;
+	font-size: 20px;
+    padding-left: -10px;
+
 }
 body{
 	font-family: 'Roboto', sans-serif;
@@ -624,17 +531,7 @@ body{
 		
 }
 
-.friendMessageSpace_additionalMessageHolder_message_floatMenu_addEmoji_button {
-	display: inline-block;
-}
 
-.friendMessageSpace_additionalMessageHolder_message_floatMenu_reply_button {
-	display: inline-block;
-}
-
-.friendMessageSpace_additionalMessageHolder_message_floatMenu_other_button {
-	display: inline-block;
-}
 .mainIconStyle:hover{
 	color: #78e5b7;
 }
@@ -650,24 +547,10 @@ body{
     opacity: 0.8;
 }
 
-.friendMessageSpace_additionalMessageHolder_message_floatMenuHolder {
-	text-align: right;
-	margin-bottom: -30px;
-}
 
-.friendMessageSpace_mainMessageHolder_message_foatMenuHolder {
-	text-align: right;
-	margin-bottom: -30px;
-}
-.floatMenuStyle{
-	background-color: #f1f1f1;
-	opacity: 1;
-}
-
-.friendMessageSpace_additionalMessageHolder_message_emojiReaction {
-	margin-top: 5px;
-}
 
 .myMessageSpace_additionalMessageHolder_message_emojiReaction {
 	margin-top: 5px;
 }
+/* ========================================================================== */
+

@@ -21,7 +21,8 @@ export class FriendGroupBarComponent implements OnInit {
     //this.subscription = this.data.currentEventMessage.subscribe(message => this.message = message.name);
   }
   onClick(){
-    console.log("клик сработал, данные: " + this.friendOrGroupData.name +" c id: " + this.friendOrGroupData.id);
+    
+    console.log("click on friendGroupBar send data : " + this.friendOrGroupData.name +" with id: " + this.friendOrGroupData.id);
     //this.data.changeMessage(this.friendOrGroupData);
     this.selectGroup();
   }

@@ -76,6 +76,10 @@ export class MainComponent implements OnInit {
           $('.response_bar').first().height($('.response_input').first().height() + 50);
         }
 
+        function setSerchInMessageBarWidth(){
+          $(".searchInMessageBar").first().width($('.right_main_colum').first().width());
+        }
+
         // will remove to mediaquery
         function hideEmojiSendfileButtons() {
           if ($(window).width() > 700) {
@@ -115,6 +119,7 @@ export class MainComponent implements OnInit {
           setRightMainColumMarginLeft();
           window.scroll(0, 0);
           RightHeaderName();
+          setSerchInMessageBarWidth();
           //responseBarHeight();
           console.log("отработала функция калибровки размера окон");
 
@@ -130,7 +135,7 @@ export class MainComponent implements OnInit {
 
         //$(".response_input").keypress(function () {
         //  setRightWinowSize();
-        //  console.log("респонс инпут изменил размер");
+        //console.log(newHeight + " - heigh of messageBar");
         //})
 
       });
@@ -158,6 +163,10 @@ export class MainComponent implements OnInit {
         function setUserListHeight() {
           var userList = $('.contactList').first();
           userList.height($(window).height() - $('.right_header').first().height());
+        }
+        
+        function setSerchInMessageBarWidth(){
+          $(".searchInMessageBar").first().width($('.right_main_colum').first().width());
         }
 
         function setResponseBarHeight() {
@@ -205,6 +214,7 @@ export class MainComponent implements OnInit {
           setRightMainColumMarginLeft();
           window.scroll(0, 0);
           RightHeaderName();
+          setSerchInMessageBarWidth();
 
         }
 
@@ -215,6 +225,20 @@ export class MainComponent implements OnInit {
     })(jQuery);
 
   }
+
+
+  searchInMessageBarStyle = 'searchInMessageBarDisable';
+  searchInMessageButton(){
+    
+      if(this.searchInMessageBarStyle == 'searchInMessageBarEnable') {
+        this.searchInMessageBarStyle = 'searchInMessageBarDisable';
+      } else {
+        this.searchInMessageBarStyle = 'searchInMessageBarEnable';
+      }
+      
+  }
+
+
 
 
   SelectGroup(group_id: number){

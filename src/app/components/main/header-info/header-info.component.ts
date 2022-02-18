@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { GroupDTO } from 'src/app/model/GroupDTO';
 @Component({
   selector: 'app-header-info',
   templateUrl: './header-info.component.html',
@@ -8,13 +9,15 @@ import { Subscription } from 'rxjs';
 export class HeaderInfoComponent implements OnInit {
 
 
-
+  name:string="";
    constructor() { }
-   name:string = "";
+  
 
    subscription?: Subscription;
+  @Input() grpArray: GroupDTO[];
+  @Input() selectedGrpId:number;
 
-   
+   //name = this.grpArray.map(({  }) => );;
    ngOnInit() {
      //this.subscription = this.data.currentEventMessage.subscribe(message => this.name = message.name)
    }
@@ -23,9 +26,7 @@ export class HeaderInfoComponent implements OnInit {
     if(this.subscription != undefined)
      this.subscription.unsubscribe();
    }
-   friendOrGroupName: string = "";
-   friendOrGroupStatus: string = "";
-  @Input() friendOrGroupData: any = {name: 'null', id: 42};
+
 
 
 

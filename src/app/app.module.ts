@@ -17,6 +17,16 @@ import { HeaderInfoComponent } from './components/main/header-info/header-info.c
 import { FriendGroupBarComponent } from './components/main/friend-group-bar/friend-group-bar.component';
 import { ProtoMessageComponent } from './components/main/proto-message/proto-message.component';
 import { GroupBarComponent } from './components/main/group-bar/group-bar.component';
+import { ContentPreviewInnerMessageComponent } from './components/main/proto-message/content-preview-inner-message/content-preview-inner-message.component';
+import { MetaDataMessageComponent } from './components/main/proto-message/meta-data-message/meta-data-message.component';
+import { GroupMessageComponent } from './components/main/proto-message/group-message/group-message.component';
+import { CustomDateFormatPipePipe } from './pipes/custom-date-format-pipe.pipe';
+import { ChatSearchBarComponent } from './components/main/chat-search-bar/chat-search-bar.component';
+import { MainMenuComponent } from './components/main/main-menu/main-menu.component';
+import { UserMenuComponent } from './components/main/user-menu/user-menu.component';
+import { GroupMenuComponent } from './components/main/group-menu/group-menu.component';
+import { UserChatMenuComponent } from './components/main/user-chat-menu/user-chat-menu.component';
+import { GroupChatMenuComponent } from './components/main/group-chat-menu/group-chat-menu.component';
 const appRoutes: Routes = [
   
   { path: 'login', component: LoginComponent},
@@ -31,7 +41,12 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,RegistrationComponent,LoginComponent,
      MyMessageComponent, FriendMessageComponent, HeaderInfoComponent,
-      FriendGroupBarComponent, MainComponent, ProtoMessageComponent, GroupBarComponent],
+      FriendGroupBarComponent, MainComponent, ProtoMessageComponent,
+       GroupBarComponent, ContentPreviewInnerMessageComponent,
+        MetaDataMessageComponent, GroupMessageComponent, CustomDateFormatPipePipe,
+         ChatSearchBarComponent, MainMenuComponent, UserMenuComponent, GroupMenuComponent,
+          UserChatMenuComponent,
+          GroupChatMenuComponent],
   imports: [
     BrowserModule,
     FormsModule,

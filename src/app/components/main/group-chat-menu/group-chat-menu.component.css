@@ -1,0 +1,64 @@
+.groupRoomSettings_menu {
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+    top: 36px;
+    right: 27px;
+    display: none;
+		
+}
+
+
+.groupRoomSettings_content {
+    display: block;
+    background-color: #f1f1f1;
+    width: 100%;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+.groupRoomSettings_listWrap {
+		font-size: 15px;
+	height: 30px;
+	padding-top: 13px;
+	text-align: left;
+	cursor: pointer;
+}
+.groupRoomSettings_content {
+    display: block;
+    background-color: #f1f1f1;
+    width: 100%;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+.groupRoomSettings_listWrap:hover {
+    background-color: #ddd;
+    color: #187E6F;
+}
+
+
+.groupRoomSettings_icon {
+    display: inline-block;
+    margin-left: 20px;
+    width: 30px;
+    margin-right: auto;
+}
+
+
+.groupRoomSettings_list_text {
+    display: inline-block;
+}
+
+.groupRoomSettings_list {
+
+
+	width: 100%;
+	height: 100%;
+
+
+}

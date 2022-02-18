@@ -1,0 +1,84 @@
+.userSettings_avatar{
+	height: 300px;
+	background-color: aqua;
+
+}
+
+
+
+
+
+
+
+.userSettings_menu {
+    position: absolute;
+    width: 300px;
+    left: 37px;
+    z-index: 2;
+    top: 30px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Dropdown Content (Hidden by Default) */
+.userSettings_content {
+  display: block;
+  background-color: #f1f1f1;
+	width: 300px;
+  min-width: 160px;
+
+}
+
+/* Links inside the dropdown */
+.userSettings_content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.userSettings_listWrap{
+	font-size: 15px;
+	height: 30px;
+	padding-top: 13px;
+	text-align: left;
+	cursor: pointer;
+}
+
+
+/* Change color of dropdown links on hover */
+.userSettings_listWrap:hover {
+    background-color: #ddd;
+    color: #187E6F;
+}
+
+.userSettings_userName{
+	padding-top: 250px;
+	margin-left: 20px;
+	text-align: left;
+	font-weight: bold;
+}
+.userSettings_list_text{
+	margin-left: 20px;
+	display: inline-block;
+}
+
+.userSettings_list {
+	width: 100%;
+	height: 100%;
+}
+
+.userSettings_icon {
+	display: inline-block;
+	margin-left: 30px;
+}
+.userSettings_icon_logout {
+
+}
+
+.userSettings_menu_background {
+width: 100%;
+height: 100%;
+position: absolute;
+background-color: rgba(34,34,34,0.4);
+z-index: 1;
+display: none;
+}

@@ -8,12 +8,18 @@
 
 </head>
 <body>
+<app-user-chat-menu></app-user-chat-menu>
+<app-group-chat-menu></app-group-chat-menu>
+<app-main-menu></app-main-menu>
+<app-user-menu></app-user-menu>
+<app-group-menu></app-group-menu>
+<app-chat-search-bar [styleToggle]="searchInMessageBarStyle"></app-chat-search-bar>
 <div class="main_container">
   <div class="left_main_colum">
 		  <div class="left_header">
 			<div class="left_header_menuAndSearch">
 				<div class = "left_header_menuAndSearch_menu_iconAliner">
-					<button class="left_header_menuAndSearch_menubutton"><i class="fas fa-bars menuIcon mainIconStyle"></i></button>
+					<button class="left_header_menuAndSearch_menubutton" ><i class="bi bi-list menuIcon mainIconStyle"></i></button>
 				</div>
       
 			  <div class="left_header_menuAndSearch_searchInput">
@@ -37,18 +43,22 @@
   
   <div class="right_main_colum">
 	  <div class="right_header">
-		  <div class="right_header_contentWrapLeft">
-			<app-header-info></app-header-info>
+		 
+		  <div class="right_header_contentWrapLeft" >
+			<app-header-info [grpArray]="groupArray"  [selectedGrpId]="selectedGroupId" ></app-header-info>
 		  	</div>
 		  	<div class="right_header_contentWrapRight">
 			  <div class="right_header_buttons_bar">
-				  <div class="right_header_button right_header_button_search"><i class="fas fa-search mainIconStyle"></i></div>
-				  <div class="right_header_button right_header_button_call"><i class="fas fa-phone-alt mainIconStyle"></i></div>
-				  <div class="right_header_button right_header_button_dotmenu"><i class="fas fa-ellipsis-v mainIconStyle"></i></div>  
+				  <div class="right_header_button right_header_button_search"(click)="searchInMessageButton()"><i class="bi bi-search mainIconStyle" ></i></div>
+				  <!-- <div class="right_header_button right_header_button_call"><i class="bi bi-telephone-fill mainIconStyle"></i></div> -->
+				  <div class="right_header_button right_header_button_dotmenu"><i class="bi bi-three-dots-vertical mainIconStyle"></i></div>  
 				  
 			  </div>
 		  </div>
+		
+		  
 	  </div>
+
 	<div class="message_bar">
     <div class="messageBarWidthHolder">
 		
@@ -60,15 +70,14 @@
 	  </div>
     <div class="response_bar">
 		<div class="response_contentWrap">
-			<button class="response_contentWrap_button_sendFile"><i class="fas fa-paperclip mainIconStyle"></i></button>
+			<button class="response_contentWrap_button_sendFile"><i class="bi bi-paperclip mainIconStyle"></i></button>
 
 				<div class="response_inputAliner">
 					<div id="newMessage" (resized)="onResized($event)" (keydown)="onKey($event)" class="response_input" placeholder="Write a  message..." contenteditable="true"> </div> 
 				</div>
 
-			<button class="response_contentWrap_button_emoji"><i class="far fa-smile mainIconStyle"></i></button>
-
-			<button (click)="WriteMessage()">Send</button>
+			<button class="response_contentWrap_button_sendMessage responseBarButtons" (click)="WriteMessage()"><i class="bi bi-send-fill mainIconStyle responsBarIcons"></i></button>
+			<button class="response_contentWrap_button_emoji responseBarButtons"><i class="bi bi-emoji-smile mainIconStyle "></i></button>
 		</div>
 	  </div>
   </div>

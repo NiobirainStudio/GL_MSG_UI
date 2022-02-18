@@ -17,7 +17,8 @@ export class ProtoMessageComponent implements OnInit {
   ngOnInit() { }
 
   toggle(param1: number, param2: number): boolean{
-    //console.log(" в метод toggle попало 2 аргумента  1 - "+ param1+" 2 -"+param2+ " при сравнении они выдают ="+ (param1==param2))
+
+    console.log("method toggle get 2 args - 1 - "+ param1+", 2 -"+param2+ ".  result ="+ (param1==param2));
     return param1 == param2;
   }
 

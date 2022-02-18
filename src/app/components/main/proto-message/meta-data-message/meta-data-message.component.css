@@ -1,0 +1,22 @@
+.metaDataMessageSpace {
+	width: auto;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.metaDataMessageBar {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 4px;
+    padding-bottom: 3px;
+    border-radius: 20px;
+    max-height: 30px;
+    max-width: 100%;
+    background: rgba(66, 245, 212, 0.5);
+}
+
+.metaDataMessageText {
+    color: #FCFCFC;
+    font-weight: bold;
+}
