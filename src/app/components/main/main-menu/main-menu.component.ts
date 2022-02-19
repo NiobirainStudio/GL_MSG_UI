@@ -7,9 +7,18 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
-
+  @Input() isVisible:boolean;
+  @Output() changeVisible = new EventEmitter()
   constructor() { }
+
   ngOnInit(): void {
+  }
+  disableVisible($event:any){
+    if ($event.target == $event.currentTarget)
+    this.changeVisible.emit();
+  }
+  disableVisibleFromButton(){
+    this.changeVisible.emit();
   }
 
 }

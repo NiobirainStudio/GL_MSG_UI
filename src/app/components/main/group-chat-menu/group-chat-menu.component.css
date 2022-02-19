@@ -1,14 +1,3 @@
-.groupRoomSettings_menu {
-    position: absolute;
-    width: 200px;
-    z-index: 2;
-    top: 36px;
-    right: 27px;
-    display: none;
-		
-}
-
-
 .groupRoomSettings_content {
     display: block;
     background-color: #f1f1f1;
@@ -61,4 +50,11 @@
 	height: 100%;
 
 
+}
+.groupRoomSettings_menu {
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+    top: 20px;
+    right: 20px;		
 }

@@ -18,7 +18,7 @@ export class ProtoMessageComponent implements OnInit {
 
   toggle(param1: number, param2: number): boolean{
 
-    console.log("method toggle get 2 args - 1 - "+ param1+", 2 -"+param2+ ".  result ="+ (param1==param2));
+    //console.log("method toggle get 2 args - 1 - "+ param1+", 2 -"+param2+ ".  result ="+ (param1==param2));
     return param1 == param2;
   }
 

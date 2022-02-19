@@ -1,10 +1,10 @@
-<div class="userInfo_background">
+<div *ngIf="isVisible" (click)="disableVisible($event)"  class="userInfo_background" >
     <div class="userInfo_menu">
             <div class="userInfo_header">
                 <div class="userInfo_header_title">User info</div>
                 <div class="userInfo_header_buttonsHolder">
-                    <div class="userInfo_header_button_menu icon_button"><i class="bi bi-three-dots-vertical"></i></div>
-                    <div class="userInfo_header_button_esc icon_button"><i class="bi bi-x-lg"></i></div>
+                    <!-- <div class="userInfo_header_button_menu icon_button"><i class="bi bi-three-dots-vertical"></i></div> -->
+                    <div (click)="disableVisibleFromButton()"  class="userInfo_header_button_esc icon_button"><i class="bi bi-x-lg"></i></div>
                     
                     
                 </div>

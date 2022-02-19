@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GroupDTO } from 'src/app/model/GroupDTO';
 @Component({
@@ -16,7 +16,8 @@ export class HeaderInfoComponent implements OnInit {
    subscription?: Subscription;
   @Input() grpArray: GroupDTO[];
   @Input() selectedGrpId:number;
-
+   @Input() isVisible:boolean;
+   @Output() changeVisible = new EventEmitter()
    //name = this.grpArray.map(({  }) => );;
    ngOnInit() {
      //this.subscription = this.data.currentEventMessage.subscribe(message => this.name = message.name)
@@ -27,6 +28,11 @@ export class HeaderInfoComponent implements OnInit {
      this.subscription.unsubscribe();
    }
 
+
+
+   enableVisible(){
+     this.changeVisible.emit();
+   }
 
 
 

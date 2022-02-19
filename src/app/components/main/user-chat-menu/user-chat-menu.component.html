@@ -1,5 +1,5 @@
-<div class="friendRoomSettings_menu_background">
-    <div class="friendRoomSettings_menu">
+
+    <div *ngIf="isVisible" class="friendRoomSettings_menu" (mouseleave)="disableVisible()" >
 
           <div class="friendRoomSettings_content">
 
@@ -33,5 +33,4 @@
             </div>
             </div>
     
-</div>
 </div>

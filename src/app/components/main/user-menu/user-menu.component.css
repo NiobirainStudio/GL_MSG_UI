@@ -18,12 +18,13 @@
     z-index: 2;
     top: 18px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	background-color: #f1f1f1;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .userInfo_content {
   display: block;
-  background-color: #f1f1f1;
+ 
 	width: 100%;
   min-width: 160px;
 
@@ -51,7 +52,9 @@
     color: #187E6F;
 }
 
-
+.userInfo_header_button_esc:hover{
+	color: #187E6F;
+}
 
 
 
@@ -90,7 +93,9 @@
 
 
 .userInfo_clickableBar {
-	 border-top: 1px solid red;
+
+	margin-top: 10px;
+	 background-color: white;
 	
 }
 .userInfo_avatarHolder {
@@ -112,7 +117,8 @@
 }
 
 .userInfo_header {
-background-color: #f1f1f1;
+background-color: #ffffff;
+margin-bottom: 10px;
 width: 100%;
 padding-top: 15px;
 	padding-bottom: 10px;
@@ -143,7 +149,10 @@ justify-content: space-between;
 
 
 .userInfo_description {
-	}
+
+background-color: white;
+margin-top: 10px;
+}
 
 .userInfo_background {
 width: 100%;
@@ -152,5 +161,4 @@ position: absolute;
 
 background-color: rgba(34,34,34,0.4);
 z-index: 1;
-display: none;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-user-chat-menu',
@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-chat-menu.component.css']
 })
 export class UserChatMenuComponent implements OnInit {
-
+  @Input() isVisible:boolean;
+  @Output() changeVisible = new EventEmitter()
   constructor() { }
-
   ngOnInit(): void {
   }
 
+  disableVisible(){
+     this.changeVisible.emit();
+  }
+
+
 }
+
+
+

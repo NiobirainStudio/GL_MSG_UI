@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-group-chat-menu',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./group-chat-menu.component.css']
 })
 export class GroupChatMenuComponent implements OnInit {
-
+  @Input() isVisible:boolean;
+  @Output() changeVisible = new EventEmitter()
   constructor() { }
-
   ngOnInit(): void {
   }
+
+  disableVisible(){
+     this.changeVisible.emit();
+  }
+
 
 }

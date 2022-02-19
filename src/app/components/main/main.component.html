@@ -8,18 +8,18 @@
 
 </head>
 <body>
-<app-user-chat-menu></app-user-chat-menu>
-<app-group-chat-menu></app-group-chat-menu>
-<app-main-menu></app-main-menu>
-<app-user-menu></app-user-menu>
+<app-user-chat-menu [isVisible]="isUserChatMenuVisible" (changeVisible)="userChatMenuVisibleToggle()"></app-user-chat-menu>
+<app-group-chat-menu [isVisible]="isGroupChatMenuVisible" (changeVisible)="groupChatMenuVisibleToggle()"></app-group-chat-menu>
+<app-main-menu [isVisible]="isMainMenuVisible" (changeVisible)="mainMenuVisibleToggle()"></app-main-menu>
+<app-user-menu [isVisible]="isUserMenuVisible" (changeVisible)="userMenuVisibleToggle()"></app-user-menu>
 <app-group-menu></app-group-menu>
 <app-chat-search-bar [styleToggle]="searchInMessageBarStyle"></app-chat-search-bar>
 <div class="main_container">
   <div class="left_main_colum">
 		  <div class="left_header">
 			<div class="left_header_menuAndSearch">
-				<div class = "left_header_menuAndSearch_menu_iconAliner">
-					<button class="left_header_menuAndSearch_menubutton" ><i class="bi bi-list menuIcon mainIconStyle"></i></button>
+				<div class = "left_header_menuAndSearch_menu_iconAliner" >
+					<button class="left_header_menuAndSearch_menubutton"  ><i class="bi bi-list menuIcon mainIconStyle" (click)="mainMenuVisibleToggle()"></i></button>
 				</div>
       
 			  <div class="left_header_menuAndSearch_searchInput">
@@ -45,13 +45,13 @@
 	  <div class="right_header">
 		 
 		  <div class="right_header_contentWrapLeft" >
-			<app-header-info [grpArray]="groupArray"  [selectedGrpId]="selectedGroupId" ></app-header-info>
+			<app-header-info [grpArray]="groupArray"  [selectedGrpId]="selectedGroupId" [isVisible]="isUserMenuVisible" (changeVisible)="userMenuVisibleToggle()" ></app-header-info>
 		  	</div>
 		  	<div class="right_header_contentWrapRight">
 			  <div class="right_header_buttons_bar">
 				  <div class="right_header_button right_header_button_search"(click)="searchInMessageButton()"><i class="bi bi-search mainIconStyle" ></i></div>
 				  <!-- <div class="right_header_button right_header_button_call"><i class="bi bi-telephone-fill mainIconStyle"></i></div> -->
-				  <div class="right_header_button right_header_button_dotmenu"><i class="bi bi-three-dots-vertical mainIconStyle"></i></div>  
+				  <div class="right_header_button right_header_button_dotmenu" (click)="userChatMenuVisibleToggle()" (click)="groupChatMenuVisibleToggle()"><i class="bi bi-three-dots-vertical mainIconStyle"></i></div>  
 				  
 			  </div>
 		  </div>
@@ -60,15 +60,16 @@
 	  </div>
 
 	<div class="message_bar">
-    <div class="messageBarWidthHolder">
+    <div class="messageBarWidthHolder" >
 		
-		<ng-container *ngFor="let m of messageArray; let i=index">
+		<ng-container *ngFor="let m of messageArray; let i=index" >
 			<app-proto-message [message] ="m"></app-proto-message>
 		</ng-container>
 
       </div>
 	  </div>
     <div class="response_bar">
+		<div class="scrollDownButtonBar"><div class="scrollDownButton"><i class="bi bi-caret-down-fill scrollDownButtonIcon"></i></div></div>
 		<div class="response_contentWrap">
 			<button class="response_contentWrap_button_sendFile"><i class="bi bi-paperclip mainIconStyle"></i></button>
 

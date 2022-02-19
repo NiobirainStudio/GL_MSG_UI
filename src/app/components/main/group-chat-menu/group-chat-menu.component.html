@@ -1,5 +1,5 @@
-<div class="groupRoomSettings_menu_background">
-    <div class="groupRoomSettings_menu">
+
+    <div *ngIf="isVisible"  (mouseleave)="disableVisible()"  class="groupRoomSettings_menu">
 
           <div class="groupRoomSettings_content">
             <div class="groupRoomSettings_listWrap">
@@ -33,5 +33,4 @@
             </div>
             </div>
     
-</div>
 </div>

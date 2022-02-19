@@ -19,14 +19,21 @@ export class MainComponent implements OnInit {
   messageArray: Array<MessageDTO> = [];
 
   selectedGroupId: number;
-
+  //       WARNINT         HARDCODE        WARNINT         HARDCODE        WARNINT         HARDCODE     
+  selectedGroupType: number = 2;
+  //       WARNINT         HARDCODE        WARNINT         HARDCODE        WARNINT         HARDCODE  
   constructor(public service: MainService, @Inject(DOCUMENT) private document: Document) {}
   
   onKey(event: any): void {
     // keyCode for the Enter key is 13
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && !event.shiftKey) {
       //console.log('enterPressed', event.target.innerText);
+      
+      this.WriteMessage();
       event.preventDefault();
+    if (event.keyCode == 13 && event.shiftKey){
+      document.execCommand('insertLineBreak');
+    }
     }
   }
   
@@ -121,7 +128,6 @@ export class MainComponent implements OnInit {
           RightHeaderName();
           setSerchInMessageBarWidth();
           //responseBarHeight();
-          console.log("отработала функция калибровки размера окон");
 
         }
 
@@ -226,7 +232,7 @@ export class MainComponent implements OnInit {
 
   }
 
-
+//   SearchBar  show/hide  
   searchInMessageBarStyle = 'searchInMessageBarDisable';
   searchInMessageButton(){
     
@@ -237,6 +243,47 @@ export class MainComponent implements OnInit {
       }
       
   }
+
+//   Main menu  show/hide
+  isMainMenuVisible:boolean = false;
+  mainMenuVisibleToggle(){
+    this.isMainMenuVisible = !this.isMainMenuVisible;
+  }
+//   User menu  show/hide
+isUserMenuVisible:boolean = false;
+userMenuVisibleToggle(){
+  this.isUserMenuVisible = !this.isUserMenuVisible;
+}
+//   Group menu  show/hide                                       in process...
+isGroupMenuVisible:boolean = false;
+groupMenuVisibleToggle(){
+  this.isGroupMenuVisible = !this.isGroupMenuVisible;
+}
+//   Group CHAT menu  show/hide
+isGroupChatMenuVisible:boolean = false;
+groupChatMenuVisibleToggle(){
+  if(this.selectedGroupType == 2){
+  this.isGroupChatMenuVisible = !this.isGroupChatMenuVisible;
+  }
+}
+//   User CHAT menu  show/hide
+isUserChatMenuVisible:boolean = false;
+userChatMenuVisibleToggle(){
+  if(this.selectedGroupType == 1){
+    this.isUserChatMenuVisible = !this.isUserChatMenuVisible;
+    }
+}
+//   Сhannel menu  show/hide                                       in process...
+//   Сhannel CHAT menu  show/hide                                       in process...
+
+
+
+
+
+
+
+
+
 
 
 

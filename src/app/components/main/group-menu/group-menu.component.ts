@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter  } from '@angular/core';
 
 @Component({
   selector: 'app-group-menu',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupMenuComponent implements OnInit {
 
+  @Input() isVisible:boolean;
+  @Output() changeVisible = new EventEmitter()
   constructor() { }
 
   ngOnInit(): void {
+  }
+  disableVisible($event:any){
+    if ($event.target == $event.currentTarget)
+    this.changeVisible.emit();
   }
 
 }

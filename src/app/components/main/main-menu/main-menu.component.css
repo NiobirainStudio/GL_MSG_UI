@@ -51,7 +51,7 @@
 }
 
 .userSettings_userName{
-	padding-top: 250px;
+	padding-top: 260px;
 	margin-left: 20px;
 	text-align: left;
 	font-weight: bold;
@@ -80,5 +80,13 @@ height: 100%;
 position: absolute;
 background-color: rgba(34,34,34,0.4);
 z-index: 1;
-display: none;
+}
+.userSettings_escButton {
+	font-size: 25px;
+	position: relative;
+	bottom: 275px;
+	left: 272px;
+}
+.userSettings_escButton:hover{
+	color: #187E6F;
 }

@@ -1,7 +1,8 @@
-<div class="userSettings_menu_background" >
+<div *ngIf="isVisible"  class="userSettings_menu_background" (click)="disableVisible($event)" >
     <div class="userSettings_menu">
         <div class="userSettings_avatar">
             <div class="userSettings_userName">UserName</div>
+            <div class="userSettings_escButton"(click)="disableVisibleFromButton()"><i class="bi bi-x-lg"></i></div>
         </div>
               <div class="userSettings_content">
                 <div class="userSettings_listWrap">
