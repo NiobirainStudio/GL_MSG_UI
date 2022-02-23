@@ -29,7 +29,9 @@
     background-color: #ddd;
     color: #187E6F;
 }
-
+.groupRoomSettings_listWrap:active{
+	background-color: #47918b41;
+}
 
 .groupRoomSettings_icon {
     display: inline-block;

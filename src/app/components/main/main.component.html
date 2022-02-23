@@ -11,7 +11,7 @@
 <app-user-chat-menu [isVisible]="isUserChatMenuVisible" (changeVisible)="userChatMenuVisibleToggle()"></app-user-chat-menu>
 <app-group-chat-menu [isVisible]="isGroupChatMenuVisible" (changeVisible)="groupChatMenuVisibleToggle()"></app-group-chat-menu>
 <app-main-menu [isVisible]="isMainMenuVisible" (changeVisible)="mainMenuVisibleToggle()"></app-main-menu>
-<app-user-menu [isVisible]="isUserMenuVisible" (changeVisible)="userMenuVisibleToggle()"></app-user-menu>
+<app-user-menu [(isVisible)]="isUserMenuVisible"></app-user-menu>
 <app-group-menu></app-group-menu>
 <app-chat-search-bar [styleToggle]="searchInMessageBarStyle"></app-chat-search-bar>
 <div class="main_container">
@@ -21,12 +21,12 @@
 				<div class = "left_header_menuAndSearch_menu_iconAliner" >
 					<button class="left_header_menuAndSearch_menubutton"  ><i class="bi bi-list menuIcon mainIconStyle" (click)="mainMenuVisibleToggle()"></i></button>
 				</div>
-      
+
 			  <div class="left_header_menuAndSearch_searchInput">
 					<input type="text" placeholder="  Search" class="search_input">
 				</div>
 			</div>
-		 
+
 			<!--<div class="left_header_communication_bar">
 			  <div class="left_header_communicationBar_addContactButton"><i class="fas fa-user-plus"></i></div>
 
@@ -36,34 +36,35 @@
 		</div>
 	  	<div class="contactList">
 			<ng-container *ngFor="let g of groupArray; let i=index">
-				<app-friend-group-bar [friendOrGroupData] ="g" (click)="SelectGroup(g.id)" (groupSelected)="GetMessages(g.id)" ></app-friend-group-bar>
+				<app-room-bar [roomData] ="g" (click)="SelectGroup(g.id)" (groupSelected)="GetMessages(g.id)" ></app-room-bar>
 			</ng-container>
 	  </div>
   </div>
-  
+
   <div class="right_main_colum">
 	  <div class="right_header">
-		 
+
 		  <div class="right_header_contentWrapLeft" >
-			<app-header-info [grpArray]="groupArray"  [selectedGrpId]="selectedGroupId" [isVisible]="isUserMenuVisible" (changeVisible)="userMenuVisibleToggle()" ></app-header-info>
+			<app-proto-header-info    [selectedGrpId]="selectedGroupId" ></app-proto-header-info>
+<!--			<app-proto-header-info [grpArray]="groupArray"  [selectedGrpId]="selectedGroupId" //[isVisible]="isUserMenuVisible" (changeVisible)="userMenuVisibleToggle()" ></app-proto-header-info>-->
 		  	</div>
 		  	<div class="right_header_contentWrapRight">
 			  <div class="right_header_buttons_bar">
 				  <div class="right_header_button right_header_button_search"(click)="searchInMessageButton()"><i class="bi bi-search mainIconStyle" ></i></div>
 				  <!-- <div class="right_header_button right_header_button_call"><i class="bi bi-telephone-fill mainIconStyle"></i></div> -->
-				  <div class="right_header_button right_header_button_dotmenu" (click)="userChatMenuVisibleToggle()" (click)="groupChatMenuVisibleToggle()"><i class="bi bi-three-dots-vertical mainIconStyle"></i></div>  
-				  
+				  <div class="right_header_button right_header_button_dotmenu" (click)="userChatMenuVisibleToggle()" (click)="groupChatMenuVisibleToggle()"><i class="bi bi-three-dots-vertical mainIconStyle"></i></div>
+
 			  </div>
 		  </div>
-		
-		  
+
+
 	  </div>
 
 	<div class="message_bar">
     <div class="messageBarWidthHolder" >
-		
+
 		<ng-container *ngFor="let m of messageArray; let i=index" >
-			<app-proto-message [message] ="m"></app-proto-message>
+			<app-proto-message [messageData] ="m"></app-proto-message>
 		</ng-container>
 
       </div>
@@ -74,7 +75,7 @@
 			<button class="response_contentWrap_button_sendFile"><i class="bi bi-paperclip mainIconStyle"></i></button>
 
 				<div class="response_inputAliner">
-					<div id="newMessage" (resized)="onResized($event)" (keydown)="onKey($event)" class="response_input" placeholder="Write a  message..." contenteditable="true"> </div> 
+					<div id="newMessage" (resized)="onResized($event)" (keydown)="onKey($event)" class="response_input" placeholder="Write a  message..." contenteditable="true"> </div>
 				</div>
 
 			<button class="response_contentWrap_button_sendMessage responseBarButtons" (click)="WriteMessage()"><i class="bi bi-send-fill mainIconStyle responsBarIcons"></i></button>

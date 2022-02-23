@@ -3,7 +3,7 @@ import { MessageDTO } from "./MessageDTO";
 export class GroupDTO {
     id: number;
     name: string;
-    //groupType: number;
+    groupType: number;
     description: string;
     lastMessage: MessageDTO;
 

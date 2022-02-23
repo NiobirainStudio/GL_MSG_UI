@@ -22,11 +22,17 @@ import { MetaDataMessageComponent } from './components/main/proto-message/meta-d
 import { GroupMessageComponent } from './components/main/proto-message/group-message/group-message.component';
 import { CustomDateFormatPipePipe } from './pipes/custom-date-format-pipe.pipe';
 import { ChatSearchBarComponent } from './components/main/chat-search-bar/chat-search-bar.component';
-import { MainMenuComponent } from './components/main/main-menu/main-menu.component';
-import { UserMenuComponent } from './components/main/user-menu/user-menu.component';
-import { GroupMenuComponent } from './components/main/group-menu/group-menu.component';
-import { UserChatMenuComponent } from './components/main/user-chat-menu/user-chat-menu.component';
-import { GroupChatMenuComponent } from './components/main/group-chat-menu/group-chat-menu.component';
+import { MainMenuComponent } from './components/main/menu-compunents/main-menu/main-menu.component';
+import { UserMenuComponent } from './components/main/menu-compunents/user-menu/user-menu.component';
+import { GroupMenuComponent } from './components/main/menu-compunents/group-menu/group-menu.component';
+import { UserChatMenuComponent } from './components/main/menu-compunents/user-chat-menu/user-chat-menu.component';
+import { GroupChatMenuComponent } from './components/main/menu-compunents/group-chat-menu/group-chat-menu.component';
+import { ProtoHeaderInfoComponent } from './components/main/proto-header-info/proto-header-info.component';
+import { FriendHeaderInfoComponent } from './components/main/proto-header-info/friend-header-info/friend-header-info.component';
+import { GroupHeaderInfoComponent } from './components/main/proto-header-info/group-header-info/group-header-info.component';
+import { ChannelHeaderInfoComponent } from './components/main/proto-header-info/channel-header-info/channel-header-info.component';
+import { RoomBarComponent } from './components/main/room-bar/room-bar.component';
+import { SignOfRoomTypeComponent } from './components/main/room-bar/sign-of-room-type/sign-of-room-type.component';
 const appRoutes: Routes = [
   
   { path: 'login', component: LoginComponent},
@@ -46,7 +52,13 @@ const appRoutes: Routes = [
         MetaDataMessageComponent, GroupMessageComponent, CustomDateFormatPipePipe,
          ChatSearchBarComponent, MainMenuComponent, UserMenuComponent, GroupMenuComponent,
           UserChatMenuComponent,
-          GroupChatMenuComponent],
+          GroupChatMenuComponent,
+          ProtoHeaderInfoComponent,
+          FriendHeaderInfoComponent,
+          GroupHeaderInfoComponent,
+          ChannelHeaderInfoComponent,
+          RoomBarComponent,
+          SignOfRoomTypeComponent],
   imports: [
     BrowserModule,
     FormsModule,

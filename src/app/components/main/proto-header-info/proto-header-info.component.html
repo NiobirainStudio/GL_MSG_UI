@@ -1,0 +1,7 @@
+<container-element [ngSwitch]="currentGroupType">
+  <!-- the same view can be shown in more than one case -->
+  <app-friend-header-info *ngSwitchCase=1  [selectedGrpId]="selectedGrpId" ></app-friend-header-info>
+  <app-group-header-info *ngSwitchCase=2  [selectedGrpId]="selectedGrpId"  ></app-group-header-info>
+  <app-channel-header-info *ngSwitchCase=3 [selectedGrpId]="selectedGrpId"></app-channel-header-info>
+
+</container-element>

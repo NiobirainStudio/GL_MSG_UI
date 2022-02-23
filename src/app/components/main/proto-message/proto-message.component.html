@@ -1,4 +1,40 @@
-<div *ngIf="toggle(message.userId, getMyId()); else other_content">
-    <app-my-message [messageData]="message"></app-my-message>
-</div>
-<ng-template #other_content><app-friend-message [messageData]="message"></app-friend-message></ng-template>
+<container-element [ngSwitch]="messageData.type" > <!-- HARDCODE            HARDCODE             HARDCODE                  HARDCODE     -->
+   
+    <div *ngSwitchCase=1  >
+        <div *ngIf="toggle(messageData.userId, getMyId()); else other_content">
+            <app-my-message [messageData]="messageData"></app-my-message>
+        </div>
+        <ng-template #other_content><app-friend-message [messageData]="messageData"></app-friend-message></ng-template>
+    </div>
+
+
+    <div *ngSwitchCase=2  >
+        <div *ngIf="toggle(messageData.userId, getMyId()); else other_content">
+            <app-my-message [messageData]="messageData"></app-my-message>
+        </div>
+        <ng-template #other_content><app-group-message [messageData]="messageData"></app-group-message></ng-template>
+    </div>
+
+
+    <div *ngSwitchCase=3>
+        <div *ngIf="toggle(messageData.userId, getMyId()); else other_content">
+            <app-my-message [messageData]="messageData"></app-my-message>
+        </div>
+        <ng-template #other_content><app-friend-message [messageData]="messageData"></app-friend-message></ng-template>
+    </div>
+
+
+    <div *ngSwitchCase=3  >
+        <div *ngIf="toggle(messageData.userId, getMyId()); else other_content">
+            <app-my-message [messageData]="messageData"></app-my-message>
+        </div>
+        <ng-template #other_content><app-group-message [messageData]="messageData"></app-group-message></ng-template>
+    </div>
+
+    <div *ngSwitchCase=4  >
+        
+            <app-meta-data-message [messageData]="messageData"></app-meta-data-message>
+
+    </div>
+
+  </container-element>

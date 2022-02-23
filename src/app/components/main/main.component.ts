@@ -6,6 +6,8 @@ import { MainService } from 'src/app/services/main.service';
 import { DOCUMENT } from '@angular/common';
 import { GroupDTO } from 'src/app/model/GroupDTO';
 import { MessageDTO } from 'src/app/model/MessageDTO';
+import { UserDTO } from 'src/app/model/UserDTO';
+import { UserGroupRelationDTO } from 'src/app/model/UserGroupRelationDTO';
 
 @Component({
   selector: 'app-main',
@@ -17,18 +19,22 @@ import { MessageDTO } from 'src/app/model/MessageDTO';
 export class MainComponent implements OnInit {
   groupArray: Array<GroupDTO> = [];
   messageArray: Array<MessageDTO> = [];
+  usersArray: Array<UserDTO> = [];
+  UserGroupRelationsArray: Array<UserGroupRelationDTO> = [];
 
   selectedGroupId: number;
-  //       WARNINT         HARDCODE        WARNINT         HARDCODE        WARNINT         HARDCODE     
-  selectedGroupType: number = 2;
-  //       WARNINT         HARDCODE        WARNINT         HARDCODE        WARNINT         HARDCODE  
+  selectedGroupType: number;
+
+
+
+
   constructor(public service: MainService, @Inject(DOCUMENT) private document: Document) {}
-  
+
   onKey(event: any): void {
     // keyCode for the Enter key is 13
     if (event.keyCode === 13 && !event.shiftKey) {
       //console.log('enterPressed', event.target.innerText);
-      
+
       this.WriteMessage();
       event.preventDefault();
     if (event.keyCode == 13 && event.shiftKey){
@@ -36,14 +42,14 @@ export class MainComponent implements OnInit {
     }
     }
   }
-  
+
   ngOnInit() {
     // DreaD_ver's addition
     this.service.StartConnection();
     //this.service.OnReconnectedEvent();
 
     // Conncet to SignalR server groups
-    setTimeout(() => { 
+    setTimeout(() => {
       this.service.StartGroupChannel(+(localStorage.getItem("UserSession") || -1));
     }, 1000);
 
@@ -170,7 +176,7 @@ export class MainComponent implements OnInit {
           var userList = $('.contactList').first();
           userList.height($(window).height() - $('.right_header').first().height());
         }
-        
+
         function setSerchInMessageBarWidth(){
           $(".searchInMessageBar").first().width($('.right_main_colum').first().width());
         }
@@ -232,16 +238,16 @@ export class MainComponent implements OnInit {
 
   }
 
-//   SearchBar  show/hide  
+//   SearchBar  show/hide
   searchInMessageBarStyle = 'searchInMessageBarDisable';
   searchInMessageButton(){
-    
+
       if(this.searchInMessageBarStyle == 'searchInMessageBarEnable') {
         this.searchInMessageBarStyle = 'searchInMessageBarDisable';
       } else {
         this.searchInMessageBarStyle = 'searchInMessageBarEnable';
       }
-      
+
   }
 
 //   Main menu  show/hide
@@ -250,31 +256,36 @@ export class MainComponent implements OnInit {
     this.isMainMenuVisible = !this.isMainMenuVisible;
   }
 //   User menu  show/hide
-isUserMenuVisible:boolean = false;
-userMenuVisibleToggle(){
-  this.isUserMenuVisible = !this.isUserMenuVisible;
-}
-//   Group menu  show/hide                                       in process...
-isGroupMenuVisible:boolean = false;
-groupMenuVisibleToggle(){
-  this.isGroupMenuVisible = !this.isGroupMenuVisible;
-}
-//   Group CHAT menu  show/hide
-isGroupChatMenuVisible:boolean = false;
-groupChatMenuVisibleToggle(){
-  if(this.selectedGroupType == 2){
-  this.isGroupChatMenuVisible = !this.isGroupChatMenuVisible;
+  isUserMenuVisible:boolean = false;
+  userMenuVisibleToggle(){
+    this.isUserMenuVisible = true;
   }
-}
-//   User CHAT menu  show/hide
-isUserChatMenuVisible:boolean = false;
-userChatMenuVisibleToggle(){
-  if(this.selectedGroupType == 1){
-    this.isUserChatMenuVisible = !this.isUserChatMenuVisible;
+  //   Group menu  show/hide                                       in process...
+  isGroupMenuVisible:boolean = false;
+  groupMenuVisibleToggle(){
+    this.isGroupMenuVisible = !this.isGroupMenuVisible;
+  }
+  //   Сhanel menu  show/hide    
+  isChanelMenuVisible:boolean = false;
+  chanelMenuVisibleToggle(){
+    this.isChanelMenuVisible = !this.isChanelMenuVisible;
+  }
+  //   Group CHAT menu  show/hide
+  isGroupChatMenuVisible:boolean = false;
+  groupChatMenuVisibleToggle(){
+    if(this.selectedGroupType == 2){
+    this.isGroupChatMenuVisible = !this.isGroupChatMenuVisible;
     }
-}
-//   Сhannel menu  show/hide                                       in process...
-//   Сhannel CHAT menu  show/hide                                       in process...
+  }
+  //   User CHAT menu  show/hide
+  isUserChatMenuVisible:boolean = false;
+  userChatMenuVisibleToggle(){
+    if(this.selectedGroupType == 1){
+      this.isUserChatMenuVisible = !this.isUserChatMenuVisible;
+      }
+  }
+
+  //   Сhannel CHAT menu  show/hide                                       in process...
 
 
 
@@ -282,15 +293,79 @@ userChatMenuVisibleToggle(){
 
 
 
-
-
+  SelectGroupNameById(group_id: number): string{
+    return this.groupArray.filter(x => x.id === group_id)[0].name;
+  }
 
 
 
 
   SelectGroup(group_id: number){
-    this.selectedGroupId = group_id;
+      this.selectedGroupId = group_id;
+
+
+       if(this.groupArray.filter(x => x.id === group_id)[0].groupType == undefined){
+        this.selectedGroupType = 1;                                                               //        HARDCODE               HARDCODE               HARDCODE
+      }else {                 
+        this.selectedGroupType = this.groupArray.filter(x => x.id === group_id)[0].groupType;
+      }
   }
+
+
+  GetUserById(user_id:number): UserDTO{
+      if(this.usersArray.filter(x => x.id === user_id)[0] == undefined){                         //        HARDCODE               HARDCODE               HARDCODE
+        let description:string = "this is user with id - " + user_id;
+        let nickName:string = "mr.HardCode № " + user_id;
+        let accountName:string = "Uvuvwevwevwe Onyetenyevwe Ugwemuhwem Osas № " + user_id;
+        return new UserDTO(user_id,accountName, nickName, "Osas@gmail.com", "https://i.ytimg.com/vi/AuKyyYdkqhY/hqdefault.jpg",description)                                                             //        HARDCODE               HARDCODE               HARDCODE
+      }else {  
+        return  this.usersArray.filter(x => x.id === user_id)[0];
+      }
+
+  }
+
+
+  GetMyId():number{
+    return +(localStorage.getItem("MyId") || -1);
+  }
+
+
+  GetFriendNickNameByGroupId(group_id: number): string{
+    if(this.UserGroupRelationsArray.filter(x => x.groupId === group_id && x.userId !== this.GetMyId())[0] == undefined){
+      return "FriendName";
+    }else{
+      return this.GetUserById(this.UserGroupRelationsArray.filter(x => x.groupId === group_id && x.userId !== this.GetMyId())[0].userId).nickName;
+    }
+  }
+
+  GetUserGroupRelations() {
+      this.service.PostAndRecieveData< { userGroupRelations: UserGroupRelationDTO[]} >(this.GetSession(), '/GetUserGroupRelations').subscribe(
+        res => {
+          console.log(res);
+          res.userGroupRelations.forEach(element => {
+            this.UserGroupRelationsArray.push(element);
+          });
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  }
+
+    GetUsers() {
+      this.service.PostAndRecieveData< { users: UserDTO[]} >(this.GetSession(), '/GetUsers').subscribe(
+        res => {
+          console.log(res);
+          res.users.forEach(element => {
+            this.usersArray.push(element);
+          });
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
+
 
   /// DreaD_ver's methods
   WriteMessage() {
@@ -305,8 +380,8 @@ userChatMenuVisibleToggle(){
           this.groupArray.push(element);
         });
       },
-      err => { 
-        console.log(err); 
+      err => {
+        console.log(err);
       }
     );
   }
@@ -320,8 +395,8 @@ userChatMenuVisibleToggle(){
           this.messageArray.push(element);
         });
       },
-      err => { 
-        console.log(err); 
+      err => {
+        console.log(err);
       }
     );
   }

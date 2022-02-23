@@ -1,4 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import { UserDTO } from 'src/app/model/UserDTO';
 
 @Component({
   selector: 'app-user-menu',
@@ -6,18 +7,19 @@ import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
   styleUrls: ['./user-menu.component.css']
 })
 export class UserMenuComponent implements OnInit {
-
+  //@Input currentUser: UserDTO;
   @Input() isVisible:boolean;
-  @Output() changeVisible = new EventEmitter()
+  @Output() isVisibleChange = new EventEmitter<boolean>()
   constructor() { }
-
   ngOnInit(): void {
   }
   disableVisible($event:any){
     if ($event.target == $event.currentTarget)
-    this.changeVisible.emit();
+    this.isVisible = false;
+    this.isVisibleChange.emit(this.isVisible);
   }
   disableVisibleFromButton(){
-    this.changeVisible.emit();
+    this.isVisible = false;
+    this.isVisibleChange.emit(this.isVisible);
   }
 }

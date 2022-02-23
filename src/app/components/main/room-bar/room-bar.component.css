@@ -1,0 +1,70 @@
+.contact_bar {
+    height: 60px;
+
+    cursor: pointer;
+}
+.contactBar_avatar {
+    height: 45px;
+    border-radius: 25px;
+    width: 45px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    float: left;
+    background-color: #e5b346;
+    border: 2px solid rgb(50, 185, 73);
+}
+.contactInfo_header{
+    display: flex;
+    justify-content: space-between;
+
+}
+.contactInfo_header_roomTypeIcon{
+    position: relative;
+    top: -5px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+.contactInfo_header_contactName {
+    display: inline-block;
+    flex: auto;
+    padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 14px;
+}
+.contactInfo_contactLastMessage {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 10px;
+}
+
+
+.contactInfo_header_contactLastMessageTime {
+    display: inline-block;
+    padding-right: 10px;
+    overflow: hidden;
+}
+.contactInfo_header {
+    display: flex;
+    padding-top: 7px;
+}
+.contactInfo {
+    margin-left: 50px;
+}
+.contact_bar:hover{
+	background : #f1f1f1;
+}
+
+.contact_bar:active{
+	background : #80f8eeb0;
+}

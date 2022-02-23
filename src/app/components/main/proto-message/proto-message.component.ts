@@ -9,12 +9,13 @@ import { MessageDTO } from 'src/app/model/MessageDTO';
 export class ProtoMessageComponent implements OnInit {
 
 
-  @Input() message:MessageDTO;
+  @Input() messageData:MessageDTO;
  
   constructor() { }
 
 
-  ngOnInit() { }
+  ngOnInit() {
+   }
 
   toggle(param1: number, param2: number): boolean{
 

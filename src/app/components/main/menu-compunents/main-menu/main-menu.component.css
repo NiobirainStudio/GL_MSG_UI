@@ -49,6 +49,9 @@
     background-color: #ddd;
     color: #187E6F;
 }
+.userSettings_listWrap:active{
+	background-color: #47918b41;
+}
 
 .userSettings_userName{
 	padding-top: 260px;

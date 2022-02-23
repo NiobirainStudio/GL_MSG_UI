@@ -51,10 +51,14 @@
     background-color: #ddd;
     color: #187E6F;
 }
+.userInfo_clickable:active{
+	background-color: #47918b41;
+}
 
 .userInfo_header_button_esc:hover{
 	color: #187E6F;
 }
+
 
 
 
