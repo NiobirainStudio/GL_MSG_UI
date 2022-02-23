@@ -4,10 +4,13 @@ import { ResizedEvent } from 'angular-resize-event';
 import { MainService } from 'src/app/services/main.service';
 
 import { DOCUMENT } from '@angular/common';
-import { GroupDTO } from 'src/app/model/GroupDTO';
-import { MessageDTO } from 'src/app/model/MessageDTO';
-import { UserDTO } from 'src/app/model/UserDTO';
-import { UserGroupRelationDTO } from 'src/app/model/UserGroupRelationDTO';
+import { GroupDTO } from 'src/app/models/DTO_Models/GroupDTO';
+import { MessageDTO } from 'src/app/models/DTO_Models/MessageDTO';
+import { UserDTO } from 'src/app/models/DTO_Models/UserDTO';
+import { StorageService } from 'src/app/services/storage.service';
+import { Group } from 'src/app/models/Inner_Models/Group';
+import { Message } from 'src/app/models/Inner_Models/Message';
+import { GXGM_DTO } from 'src/app/models/DTO_Models/GXGM_DTO';
 
 @Component({
   selector: 'app-main',
@@ -17,18 +20,19 @@ import { UserGroupRelationDTO } from 'src/app/model/UserGroupRelationDTO';
 
 
 export class MainComponent implements OnInit {
-  groupArray: Array<GroupDTO> = [];
-  messageArray: Array<MessageDTO> = [];
+  groupArray: Array<Group> = [];
+  messageArray: Array<Message> = [];
   usersArray: Array<UserDTO> = [];
-  UserGroupRelationsArray: Array<UserGroupRelationDTO> = [];
 
   selectedGroupId: number;
   selectedGroupType: number;
 
 
-
-
-  constructor(public service: MainService, @Inject(DOCUMENT) private document: Document) {}
+// SELECTION UNIT
+  constructor(
+    public mainService: MainService, 
+    public storageService: StorageService,
+    @Inject(DOCUMENT) private document: Document) {}
 
   onKey(event: any): void {
     // keyCode for the Enter key is 13
@@ -44,19 +48,22 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    // DreaD_ver's addition
-    this.service.StartConnection();
-    //this.service.OnReconnectedEvent();
+    //------------------------------------------------------------//
+    // DREAD_VER'S ADDITION
+    //------------------------------------------------------------//
+    // START HUB CONNECTION
+    this.mainService.StartConnection();
 
-    // Conncet to SignalR server groups
-    setTimeout(() => {
-      this.service.StartGroupChannel(+(localStorage.getItem("UserSession") || -1));
+    // CONNECT TO SIGNALR SERVER GROUPS
+    setTimeout(() => { 
+      this.mainService.StartGroupChannel(+(localStorage.getItem("UserSession") || -1));
     }, 1000);
 
-    this.GetGroups();
+    // GET ALL GROUPS FOR THE CURRENT USER
+    this.GetAllUserGroups();
 
-    // Setup listeners
-    this.service.ListenOnMessages(this.MessageCallbackFunction);
+    // SETUP LISTENERS
+    this.mainService.ListenOnMessages(this.MessageCallbackFunction);
 
 
 
@@ -303,6 +310,9 @@ export class MainComponent implements OnInit {
   SelectGroup(group_id: number){
       this.selectedGroupId = group_id;
 
+      // Find group and set message array
+      this.messageArray = this.groupArray.find(g => g.id == this.selectedGroupId)?.messages || [];
+      console.log(this.messageArray);
 
        if(this.groupArray.filter(x => x.id === group_id)[0].groupType == undefined){
         this.selectedGroupType = 1;                                                               //        HARDCODE               HARDCODE               HARDCODE
@@ -317,7 +327,7 @@ export class MainComponent implements OnInit {
         let description:string = "this is user with id - " + user_id;
         let nickName:string = "mr.HardCode № " + user_id;
         let accountName:string = "Uvuvwevwevwe Onyetenyevwe Ugwemuhwem Osas № " + user_id;
-        return new UserDTO(user_id,accountName, nickName, "Osas@gmail.com", "https://i.ytimg.com/vi/AuKyyYdkqhY/hqdefault.jpg",description)                                                             //        HARDCODE               HARDCODE               HARDCODE
+        return new UserDTO(user_id, accountName, nickName, "Osas@gmail.com", "https://i.ytimg.com/vi/AuKyyYdkqhY/hqdefault.jpg", description)                                                             //        HARDCODE               HARDCODE               HARDCODE
       }else {  
         return  this.usersArray.filter(x => x.id === user_id)[0];
       }
@@ -331,106 +341,139 @@ export class MainComponent implements OnInit {
 
 
   GetFriendNickNameByGroupId(group_id: number): string{
+    /*
     if(this.UserGroupRelationsArray.filter(x => x.groupId === group_id && x.userId !== this.GetMyId())[0] == undefined){
       return "FriendName";
     }else{
       return this.GetUserById(this.UserGroupRelationsArray.filter(x => x.groupId === group_id && x.userId !== this.GetMyId())[0].userId).nickName;
     }
+    */
+   return "NO";
   }
 
-  GetUserGroupRelations() {
-      this.service.PostAndRecieveData< { userGroupRelations: UserGroupRelationDTO[]} >(this.GetSession(), '/GetUserGroupRelations').subscribe(
-        res => {
-          console.log(res);
-          res.userGroupRelations.forEach(element => {
-            this.UserGroupRelationsArray.push(element);
-          });
-        },
-        err => {
-          console.log(err);
-        }
-      );
+
+
+
+
+
+
+
+  //------------------------------------------------------------//
+  //------------------------------------------------------------//
+  // DREAD_VER'S TOOLBOX OF METHODS
+  //------------------------------------------------------------//
+  //------------------------------------------------------------//
+
+
+
+
+
+  //------------------------------------------------------------//
+  // TOOL FUNCTIONS
+  //------------------------------------------------------------//
+  private GetSession(): number {
+    return (+(localStorage.getItem("UserSession") || -1));
+  }
+  //------------------------------------------------------------//
+
+
+
+  //------------------------------------------------------------//
+  // EVENT FUNCTIONS
+  //------------------------------------------------------------//
+
+  // WRITE MESSAGE TO SERVER
+  public WriteMessage() {
+    this.mainService.SendTextMessage(this.GetSession(), this.document.getElementById('newMessage')?.innerHTML || '', this.selectedGroupId);
+  }
+  //------------------------------------------------------------//
+
+
+  //------------------------------------------------------------//
+  // LISTENER CALLBACKS
+  //------------------------------------------------------------//
+  // MESSAGE CALLBACK
+  public MessageCallbackFunction = (data: MessageDTO): void => {
+    console.log(data);
+    // ACTION
+    this.groupArray.find(g => g.id == data.groupId)?.messages.push(
+      new Message(data)
+    );
   }
 
-    GetUsers() {
-      this.service.PostAndRecieveData< { users: UserDTO[]} >(this.GetSession(), '/GetUsers').subscribe(
-        res => {
-          console.log(res);
-          res.users.forEach(element => {
-            this.usersArray.push(element);
-          });
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    }
-
-
-  /// DreaD_ver's methods
-  WriteMessage() {
-    this.service.SendTextMessage(this.GetSession(), this.document.getElementById('newMessage')?.innerHTML || '', this.selectedGroupId);
+  // GROUP CALLBACK
+  public GroupCallbackFunction = (data: MessageDTO): void => {
+    console.log(data);
   }
+  
+  // USER CALLBACK
+  public UserCallbackFunction = (data: MessageDTO): void => {
+    console.log(data);
+  }
+  //------------------------------------------------------------//
 
-  GetGroups() {
-    this.service.PostAndRecieveData< { groups: GroupDTO[]} >(this.GetSession(), '/GetUserGroups').subscribe(
+
+
+  //------------------------------------------------------------//
+  // GET METHODS
+  //------------------------------------------------------------//
+  // ON INIT GET ALL USER GROUPS
+  public GetAllUserGroups(){
+    this.mainService.PostAndRecieveData< { groups: Array<GroupDTO> }, number >(this.GetSession(), '/GetUserGroups').subscribe(
       res => {
         console.log(res);
         res.groups.forEach(element => {
-          this.groupArray.push(element);
+          this.storageService.storeGroup(element.id, element);
+          
+          this.groupArray.push(new Group(element));
         });
       },
-      err => {
-        console.log(err);
+      err => { 
+        console.log(err); 
       }
     );
   }
 
-  GetMessages(group_id: number) {
-    this.service.PostAndRecieveData< { messages: MessageDTO[]} >(group_id, '/GetGroupMessages').subscribe(
-      res => {
-        console.log(res);
-        this.messageArray = [];
-        res.messages.forEach(element => {
-          this.messageArray.push(element);
-        });
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
-
-  private GetSession() {
-    return (+(localStorage.getItem("UserSession") || -1));
-  }
-
-  public MessageCallbackFunction = (data: MessageDTO): void => {
-    this.messageArray.push(data);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // ON INIT GET ALL USER GROUPS
-  public GetAllUserGroups(){
-
-  }
+  //------------------------------------------------------------//
 
   // ON GROUP CHOOSE GET LAST X MESSAGES
-  public msg_count_take = 40;
-  public GetLastGroupMessages(){
-
+  public GetLastGroupMessages(groupId: number) {
+    if ((this.groupArray.find(g => g.id == groupId)?.messages.length || 0) == 0){
+      this.mainService.PostAndRecieveData< { messages: Array<MessageDTO> }, number >(groupId, '/GetLastGroupMessages').subscribe(
+        res => {
+          console.log(res);
+          // ACTION
+          res.messages.forEach(element => {
+            this.groupArray.find(g => g.id == groupId)?.messages.push(
+              new Message(element)
+            );
+          });
+        },
+        err => { 
+          console.log(err); 
+        }
+      );
+    }
   }
+  
+  //------------------------------------------------------------//
+
+  // GET MORE GROUP MESSAGES AFTER RECEIVING THE LAST X MESSAGES
+  public GetMoreGroupMessages(groupId: number, lastId: number) {
+    this.mainService.PostAndRecieveData< { messages: Array<MessageDTO> }, GXGM_DTO >( new GXGM_DTO(groupId, lastId), '/GetXGroupMessages').subscribe(
+      res => {
+        console.log(res);
+        // ACTION
+        res.messages.forEach(element => {
+          this.groupArray.find(g => g.id == groupId)?.messages.push(
+            new Message(element)
+          );
+        });
+      },
+      err => { 
+        console.log(err); 
+      }
+    );
+  }
+  //------------------------------------------------------------//
 }

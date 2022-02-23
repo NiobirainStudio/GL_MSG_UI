@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {GroupDTO} from "../../../../model/GroupDTO";
+import {GroupDTO} from "src/app/models/DTO_Models/GroupDTO";
 
 @Component({
   selector: 'app-channel-header-info',

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
-import {GroupDTO} from "../../../../model/GroupDTO";
+import {GroupDTO} from "src/app/models/DTO_Models/GroupDTO";
 import { MainComponent } from '../../main.component';
 
 @Component({

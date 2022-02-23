@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { Subscription } from 'rxjs';
-import { GroupDTO } from 'src/app/model/GroupDTO';
+import { GroupDTO } from 'src/app/models/DTO_Models/GroupDTO';
 @Component({
   selector: 'app-header-info',
   templateUrl: './header-info.component.html',

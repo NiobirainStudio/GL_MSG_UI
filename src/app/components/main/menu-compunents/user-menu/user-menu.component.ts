@@ -1,5 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
-import { UserDTO } from 'src/app/model/UserDTO';
+import { UserDTO } from 'src/app/models/DTO_Models/UserDTO';
 
 @Component({
   selector: 'app-user-menu',

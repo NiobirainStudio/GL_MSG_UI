@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { LogRegDTO } from '../model/LogRegDTO';
+import { LogRegDTO } from '../models/DTO_Models/LogRegDTO';
 
 @Injectable({
   providedIn: 'root'

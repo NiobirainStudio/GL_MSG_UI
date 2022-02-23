@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { LogRegDTO } from '../../model/LogRegDTO';
+import { LogRegDTO } from 'src/app/models/DTO_Models/LogRegDTO';
 import { LogRegService } from 'src/app/services/log-reg.service';
 import { Router } from '@angular/router';
 

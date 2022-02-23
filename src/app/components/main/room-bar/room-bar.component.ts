@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { GroupDTO } from 'src/app/model/GroupDTO';
+import { GroupDTO } from 'src/app/models/DTO_Models/GroupDTO';
 import { MainService } from '../../../services/main.service';
 @Component({
   selector: 'app-room-bar',

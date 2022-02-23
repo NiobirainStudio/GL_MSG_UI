@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { MessageDTO } from 'src/app/model/MessageDTO';
+import { MessageDTO } from 'src/app/models/DTO_Models/MessageDTO';
 import { MainComponent } from '../../main.component';
 @Component({
   selector: 'app-group-message',

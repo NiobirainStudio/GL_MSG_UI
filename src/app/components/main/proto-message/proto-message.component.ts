@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MessageDTO } from 'src/app/model/MessageDTO';
+import { MessageDTO } from 'src/app/models/DTO_Models/MessageDTO';
 
 @Component({
   selector: 'app-proto-message',
